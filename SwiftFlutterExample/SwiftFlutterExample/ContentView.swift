@@ -12,6 +12,9 @@ struct ContentView: View {
     // Flutter dependencies are passed in an EnvironmentObject.
     @EnvironmentObject var flutterDependencies: FlutterDependencies
 
+    // Declare a @State variable to store the wallet address
+    @State private var walletAddress: String = ""
+
     // Button is created to call the showFlutter function when pressed.
     var body: some View {
         VStack {
@@ -22,6 +25,12 @@ struct ContentView: View {
 
             Button("Clear Wallet") {
                 clearWallet()
+            }.padding(.bottom, 24) // Add 24px of padding to the bottom of the second button
+
+            if !walletAddress.isEmpty {
+                Button("Claim RLY") {
+                    claimRLY()
+                }.padding(.bottom, 24) // Add 24px of padding to the bottom of the third button
             }
         }
     }
@@ -34,10 +43,17 @@ struct ContentView: View {
             // Handle the Flutter method response if necessary
             print("existing wallet = ", response!)
 
-            if response as! String == "no address" {
+            if let address = response as? String {
+                walletAddress = address
+            }
+
+            if walletAddress == "no address" {
                 channel.invokeMethod("createWallet", arguments: nil) { response in
                     print("successfully created wallet")
                     print("New wallet address = ", response!)
+                    if let newAddress = response as? String {
+                        walletAddress = newAddress
+                    }
                 }
             }
         }
@@ -49,6 +65,16 @@ struct ContentView: View {
 
         channel.invokeMethod("deleteWallet", arguments: nil) { _ in
             print("cleared wallet")
+            walletAddress = "" // Clear the wallet address when the wallet is cleared
+        }
+    }
+
+    func claimRLY() {
+        let channel = FlutterMethodChannel(name: "channels.rly.network/wallet_manager",
+                                           binaryMessenger: flutterDependencies.flutterEngine.binaryMessenger)
+
+        channel.invokeMethod("claimRLY", arguments: nil) { response in
+            print("claimed RLY")
         }
     }
 }
