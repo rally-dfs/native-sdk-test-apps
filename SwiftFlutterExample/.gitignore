@@ -90,3 +90,6 @@ fastlane/test_output
 iOSInjectionProject/
 
 .dart_tool/*
+
+#Ignore our secrets file
+Secrets.swift

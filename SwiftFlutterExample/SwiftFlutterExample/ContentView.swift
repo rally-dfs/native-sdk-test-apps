@@ -15,11 +15,18 @@ struct ContentView: View {
     // Declare a @State variable to store the wallet address
     @State private var walletAddress: String = ""
 
+    @State private var envSetup: Bool = false
+
+    private var channel: FlutterMethodChannel {
+        FlutterMethodChannel(name: "channels.rly.network/wallet_manager",
+                             binaryMessenger: flutterDependencies.flutterEngine.binaryMessenger)
+    }
+
     // Button is created to call the showFlutter function when pressed.
     var body: some View {
         VStack {
-            Button("Send method to Flutter!") {
-                sendToFlutter()
+            Button("Check For Existing Wallet") {
+                getExistingWallet()
             }
             .padding(.bottom, 24) // Add 24px of padding to the bottom of the first button
 
@@ -28,17 +35,20 @@ struct ContentView: View {
             }.padding(.bottom, 24) // Add 24px of padding to the bottom of the second button
 
             if !walletAddress.isEmpty {
-                Button("Claim RLY") {
-                    claimRLY()
+                Button("Setup Blockchain Env") {
+                    setupEnv()
+                }.padding(.bottom, 24) // Add 24px of padding to the bottom of the third button
+            }
+
+            if envSetup {
+                Button("Claim RLY Tokens") {
+                    claimRly()
                 }.padding(.bottom, 24) // Add 24px of padding to the bottom of the third button
             }
         }
     }
 
-    func sendToFlutter() {
-        let channel = FlutterMethodChannel(name: "channels.rly.network/wallet_manager",
-                                           binaryMessenger: flutterDependencies.flutterEngine.binaryMessenger)
-
+    func getExistingWallet() {
         channel.invokeMethod("getWalletAddress", arguments: nil) { response in
             // Handle the Flutter method response if necessary
             print("existing wallet = ", response!)
@@ -60,20 +70,21 @@ struct ContentView: View {
     }
 
     func clearWallet() {
-        let channel = FlutterMethodChannel(name: "channels.rly.network/wallet_manager",
-                                           binaryMessenger: flutterDependencies.flutterEngine.binaryMessenger)
-
         channel.invokeMethod("deleteWallet", arguments: nil) { _ in
             print("cleared wallet")
             walletAddress = "" // Clear the wallet address when the wallet is cleared
         }
     }
 
-    func claimRLY() {
-        let channel = FlutterMethodChannel(name: "channels.rly.network/wallet_manager",
-                                           binaryMessenger: flutterDependencies.flutterEngine.binaryMessenger)
+    func setupEnv() {
+      channel.invokeMethod("configureEnvironment", arguments: [Secrets.apiKey, "mumbai"]) { response in
+            print("Env Setup = ", response!)
+            envSetup = true
+        }
+    }
 
-        channel.invokeMethod("claimRLY", arguments: nil) { response in
+    func claimRly() {
+        channel.invokeMethod("claimRly", arguments: nil) { _ in
             print("claimed RLY")
         }
     }

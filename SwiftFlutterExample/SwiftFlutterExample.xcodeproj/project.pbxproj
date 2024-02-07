@@ -12,6 +12,7 @@
 		01C49FEF2B72B5630095AA7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01C49FEE2B72B5630095AA7E /* Assets.xcassets */; };
 		01C49FF22B72B5630095AA7E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01C49FF12B72B5630095AA7E /* Preview Assets.xcassets */; };
 		4014B483B30EEE3F2E03ADC0 /* Pods_SwiftFlutterExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247BA13EC7DF6D1C4B408302 /* Pods_SwiftFlutterExample.framework */; };
+		A67EB9462B74463D004EF6C9 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67EB9452B74463D004EF6C9 /* Secrets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		01C49FF12B72B5630095AA7E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		247BA13EC7DF6D1C4B408302 /* Pods_SwiftFlutterExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftFlutterExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44041B30237B60531B075621 /* Pods-SwiftFlutterExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftFlutterExample.release.xcconfig"; path = "Target Support Files/Pods-SwiftFlutterExample/Pods-SwiftFlutterExample.release.xcconfig"; sourceTree = "<group>"; };
+		A67EB9452B74463D004EF6C9 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		DE15812D5D189C61F1471052 /* Pods-SwiftFlutterExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftFlutterExample.debug.xcconfig"; path = "Target Support Files/Pods-SwiftFlutterExample/Pods-SwiftFlutterExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -40,6 +42,7 @@
 		01C49FDE2B72B5620095AA7E = {
 			isa = PBXGroup;
 			children = (
+				A67EB9452B74463D004EF6C9 /* Secrets.swift */,
 				01C49FE92B72B5620095AA7E /* SwiftFlutterExample */,
 				01C49FE82B72B5620095AA7E /* Products */,
 				3BC2810D433CC87AA3B8EF2D /* Pods */,
@@ -228,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01C49FED2B72B5620095AA7E /* ContentView.swift in Sources */,
+				A67EB9462B74463D004EF6C9 /* Secrets.swift in Sources */,
 				01C49FEB2B72B5620095AA7E /* SwiftFlutterExampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
