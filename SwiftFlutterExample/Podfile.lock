@@ -1,0 +1,37 @@
+PODS:
+  - Flutter (1.0.0)
+  - FlutterPluginRegistrant (0.0.1):
+    - Flutter
+    - rly_network_flutter_sdk
+    - shared_preferences_foundation
+  - rly_network_flutter_sdk (0.0.1):
+    - Flutter
+  - shared_preferences_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - Flutter (from `../rly_sdk/.ios/Flutter`)
+  - FlutterPluginRegistrant (from `../rly_sdk/.ios/Flutter/FlutterPluginRegistrant`)
+  - rly_network_flutter_sdk (from `../rly_sdk/.ios/.symlinks/plugins/rly_network_flutter_sdk/ios`)
+  - shared_preferences_foundation (from `../rly_sdk/.ios/.symlinks/plugins/shared_preferences_foundation/darwin`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: "../rly_sdk/.ios/Flutter"
+  FlutterPluginRegistrant:
+    :path: "../rly_sdk/.ios/Flutter/FlutterPluginRegistrant"
+  rly_network_flutter_sdk:
+    :path: "../rly_sdk/.ios/.symlinks/plugins/rly_network_flutter_sdk/ios"
+  shared_preferences_foundation:
+    :path: "../rly_sdk/.ios/.symlinks/plugins/shared_preferences_foundation/darwin"
+
+SPEC CHECKSUMS:
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  FlutterPluginRegistrant: 9e016b1c55aea3fc1e04cc0c40ff94b29bb6047f
+  rly_network_flutter_sdk: db7fbf83b0d979e1fbf95aca994b9c9aac1a0360
+  shared_preferences_foundation: b4c3b4cddf1c21f02770737f147a3f5da9d39695
+
+PODFILE CHECKSUM: 8c6cb81b7075b35717fbaadc763c81cb7375d54c
+
+COCOAPODS: 1.11.3

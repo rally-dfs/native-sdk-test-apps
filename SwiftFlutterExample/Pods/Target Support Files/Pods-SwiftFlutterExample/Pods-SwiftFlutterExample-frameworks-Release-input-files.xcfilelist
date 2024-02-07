@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-SwiftFlutterExample/Pods-SwiftFlutterExample-frameworks.sh
+${BUILT_PRODUCTS_DIR}/rly_network_flutter_sdk/rly_network_flutter_sdk.framework
+${BUILT_PRODUCTS_DIR}/shared_preferences_foundation/shared_preferences_foundation.framework

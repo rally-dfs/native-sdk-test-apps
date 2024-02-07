@@ -1,0 +1,6 @@
+framework module rly_network_flutter_sdk {
+  umbrella header "rly_network_flutter_sdk-umbrella.h"
+
+  export *
+  module * { export * }
+}
