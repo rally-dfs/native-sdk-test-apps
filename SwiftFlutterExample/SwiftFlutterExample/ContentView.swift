@@ -84,8 +84,8 @@ struct ContentView: View {
     }
 
     func claimRly() {
-        channel.invokeMethod("claimRly", arguments: nil) { _ in
-            print("claimed RLY")
+        channel.invokeMethod("claimRly", arguments: nil) { response in
+            print("claimed RLY txn = ", response!)
         }
     }
 }
