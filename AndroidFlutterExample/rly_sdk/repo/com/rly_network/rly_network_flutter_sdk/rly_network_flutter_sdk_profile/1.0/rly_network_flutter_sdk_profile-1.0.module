@@ -1,0 +1,139 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.rly_network.rly_network_flutter_sdk",
+    "module": "rly_network_flutter_sdk_profile",
+    "version": "1.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.5"
+    }
+  },
+  "variants": [
+    {
+      "name": "profileVariantProfileApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "io.flutter",
+          "module": "flutter_embedding_profile",
+          "version": {
+            "requires": "1.0.0-f40e976bedff57e69e1b3d89a7c2a3c617a03dad"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "rly_network_flutter_sdk_profile-1.0.aar",
+          "url": "rly_network_flutter_sdk_profile-1.0.aar",
+          "size": 18030,
+          "sha512": "3118dcec299b3f4f559b2ab089018f4e7f4ef57eed8cc9bad17f55f3842834621ddb70e5a89fd0c834e95cee48506ec5545276a155cc5d346709fd72e67374de",
+          "sha256": "9d4f6f2cd1507ece5298fcb1e07f1f0d54d498e00f9bf50c1bb917cfd859454c",
+          "sha1": "2b5dee9111973f281fd45f1ec84eea4735641c2c",
+          "md5": "ae1a6e8dd11c54fc425245f395850412"
+        }
+      ]
+    },
+    {
+      "name": "profileVariantProfileRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "io.flutter",
+          "module": "flutter_embedding_profile",
+          "version": {
+            "requires": "1.0.0-f40e976bedff57e69e1b3d89a7c2a3c617a03dad"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.7.10"
+          }
+        },
+        {
+          "group": "com.github.komputing.kethereum",
+          "module": "model",
+          "version": {
+            "requires": "0.85.7"
+          }
+        },
+        {
+          "group": "com.github.komputing.kethereum",
+          "module": "extensions_kotlin",
+          "version": {
+            "requires": "0.85.7"
+          }
+        },
+        {
+          "group": "com.github.komputing.kethereum",
+          "module": "bip39",
+          "version": {
+            "requires": "0.85.7"
+          }
+        },
+        {
+          "group": "com.github.komputing.kethereum",
+          "module": "bip39_wordlist_en",
+          "version": {
+            "requires": "0.85.7"
+          }
+        },
+        {
+          "group": "com.github.komputing.kethereum",
+          "module": "bip32",
+          "version": {
+            "requires": "0.85.7"
+          }
+        },
+        {
+          "group": "com.github.komputing.kethereum",
+          "module": "crypto_impl_spongycastle",
+          "version": {
+            "requires": "0.85.7"
+          }
+        },
+        {
+          "group": "androidx.security",
+          "module": "security-crypto-ktx",
+          "version": {
+            "requires": "1.1.0-alpha03"
+          }
+        },
+        {
+          "group": "com.google.android.gms",
+          "module": "play-services-auth-blockstore",
+          "version": {
+            "requires": "16.2.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "rly_network_flutter_sdk_profile-1.0.aar",
+          "url": "rly_network_flutter_sdk_profile-1.0.aar",
+          "size": 18030,
+          "sha512": "3118dcec299b3f4f559b2ab089018f4e7f4ef57eed8cc9bad17f55f3842834621ddb70e5a89fd0c834e95cee48506ec5545276a155cc5d346709fd72e67374de",
+          "sha256": "9d4f6f2cd1507ece5298fcb1e07f1f0d54d498e00f9bf50c1bb917cfd859454c",
+          "sha1": "2b5dee9111973f281fd45f1ec84eea4735641c2c",
+          "md5": "ae1a6e8dd11c54fc425245f395850412"
+        }
+      ]
+    }
+  ]
+}
