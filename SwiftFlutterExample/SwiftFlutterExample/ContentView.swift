@@ -44,6 +44,10 @@ struct ContentView: View {
                 Button("Claim RLY Tokens") {
                     claimRly()
                 }.padding(.bottom, 24) // Add 24px of padding to the bottom of the third button
+
+                Button("Check RLY Token Balance") {
+                    getBalance()
+                }.padding(.bottom, 24) // Add 24px of padding to the bottom of the third button
             }
         }
     }
@@ -86,6 +90,12 @@ struct ContentView: View {
     func claimRly() {
         channel.invokeMethod("claimRly", arguments: nil) { response in
             print("claimed RLY txn = ", response!)
+        }
+    }
+
+    func getBalance() {
+        channel.invokeMethod("getBalance", arguments: nil) { response in
+            print("balance = ", response!)
         }
     }
 }
