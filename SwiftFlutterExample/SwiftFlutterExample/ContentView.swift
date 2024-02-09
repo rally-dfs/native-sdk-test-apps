@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var walletAddress: String = ""
 
     @State private var envSetup: Bool = false
+    @State private var didBootstrap: Bool = false
 
     private var channel: FlutterMethodChannel {
         FlutterMethodChannel(name: "channels.rly.network/wallet_manager",
@@ -25,34 +26,43 @@ struct ContentView: View {
     // Button is created to call the showFlutter function when pressed.
     var body: some View {
         VStack {
-            Button("Check For Existing Wallet") {
-                getExistingWallet()
+            if didBootstrap {
+                if walletAddress.isEmpty {
+                    Button("Create Wallet") {
+                        createWallet()
+                    }.padding(.bottom, 24)
+                } else {
+                    Text("Wallet Address: \(walletAddress)").padding(.horizontal, 14)
+                    Button("Clear Wallet") {
+                        clearWallet()
+                    }.padding(.top, 24).padding(.bottom, 48)
+                }
+
+                if !walletAddress.isEmpty && !envSetup {
+                    Button("Setup Blockchain Env") {
+                        setupEnv()
+                    }.padding(.bottom, 24)
+                }
+
+                if envSetup {
+                    Button("Claim RLY Tokens") {
+                        claimRly()
+                    }.padding(.bottom, 24).padding(.top, 48)
+
+                    Button("Check RLY Token Balance") {
+                        getBalance()
+                    }.padding(.bottom, 24)
+
+                    Button("Transfer Some RLY Tokens") {
+                        transferRly()
+                    }.padding(.bottom, 24)
+                }
+
+            } else {
+                Text("Attempting to Load Pre Existing Wallet")
             }
-            .padding(.bottom, 24) // Add 24px of padding to the bottom of the first button
-
-            Button("Clear Wallet") {
-                clearWallet()
-            }.padding(.bottom, 24) // Add 24px of padding to the bottom of the second button
-
-            if !walletAddress.isEmpty {
-                Button("Setup Blockchain Env") {
-                    setupEnv()
-                }.padding(.bottom, 24) // Add 24px of padding to the bottom of the third button
-            }
-
-            if envSetup {
-                Button("Claim RLY Tokens") {
-                    claimRly()
-                }.padding(.bottom, 24) // Add 24px of padding to the bottom of the third button
-
-                Button("Check RLY Token Balance") {
-                    getBalance()
-                }.padding(.bottom, 24) // Add 24px of padding to the bottom of the third button
-
-                Button("Transfer Some RLY Tokens") {
-                    transferRly()
-                }.padding(.bottom, 24) // Add 24px of padding to the bottom of the third button
-            }
+        }.onAppear {
+            getExistingWallet()
         }
     }
 
@@ -64,15 +74,16 @@ struct ContentView: View {
             if let address = response as? String {
                 walletAddress = address
             }
+            didBootstrap = true
+        }
+    }
 
-            if walletAddress == "no address" {
-                channel.invokeMethod("createWallet", arguments: ["saveToCloud": false]) { response in
-                    print("successfully created wallet")
-                    print("New wallet address = ", response!)
-                    if let newAddress = response as? String {
-                        walletAddress = newAddress
-                    }
-                }
+    func createWallet() {
+        channel.invokeMethod("createWallet", arguments: ["saveToCloud": false]) { response in
+            print("successfully created wallet")
+            print("New wallet address = ", response!)
+            if let newAddress = response as? String {
+                walletAddress = newAddress
             }
         }
     }
