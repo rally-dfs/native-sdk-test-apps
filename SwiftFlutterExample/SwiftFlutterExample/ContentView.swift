@@ -48,6 +48,10 @@ struct ContentView: View {
                 Button("Check RLY Token Balance") {
                     getBalance()
                 }.padding(.bottom, 24) // Add 24px of padding to the bottom of the third button
+
+                Button("Transfer Some RLY Tokens") {
+                    transfer()
+                }.padding(.bottom, 24) // Add 24px of padding to the bottom of the third button
             }
         }
     }
@@ -62,7 +66,7 @@ struct ContentView: View {
             }
 
             if walletAddress == "no address" {
-                channel.invokeMethod("createWallet", arguments: nil) { response in
+                channel.invokeMethod("createWallet", arguments: ["saveToCloud": false]) { response in
                     print("successfully created wallet")
                     print("New wallet address = ", response!)
                     if let newAddress = response as? String {
@@ -81,7 +85,7 @@ struct ContentView: View {
     }
 
     func setupEnv() {
-      channel.invokeMethod("configureEnvironment", arguments: [Secrets.apiKey, "mumbai"]) { response in
+        channel.invokeMethod("configureEnvironment", arguments: [Secrets.apiKey, "mumbai"]) { response in
             print("Env Setup = ", response!)
             envSetup = true
         }
@@ -90,6 +94,12 @@ struct ContentView: View {
     func claimRly() {
         channel.invokeMethod("claimRly", arguments: nil) { response in
             print("claimed RLY txn = ", response!)
+        }
+    }
+
+    func transfer() {
+        channel.invokeMethod("transferPermit", arguments: ["destinationAddress": "0xe75625f0c8659f18caf845eddae30f5c2a49cb00", "amount": "2000000000000000000"]) { response in
+            print("transfer txn = ", response!)
         }
     }
 
