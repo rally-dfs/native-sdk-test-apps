@@ -50,7 +50,7 @@ struct ContentView: View {
                 }.padding(.bottom, 24) // Add 24px of padding to the bottom of the third button
 
                 Button("Transfer Some RLY Tokens") {
-                    transfer()
+                    transferRly()
                 }.padding(.bottom, 24) // Add 24px of padding to the bottom of the third button
             }
         }
@@ -97,7 +97,15 @@ struct ContentView: View {
         }
     }
 
-    func transfer() {
+    func transferTaki() {
+        let takiTokenAddress = "0x8f5858b95797558f6facca3a9f20a081c3af6880"
+        let recipientAddress = "0xc073ade46aba2f72bf27e7befd37af9301cd8920"
+        channel.invokeMethod("transferPermit", arguments: ["destinationAddress": recipientAddress, "amount": "2000000000000000000", "wrapperType": "Permit", "tokenAddress": takiTokenAddress]) { response in
+            print("transfer txn = ", response!)
+        }
+    }
+
+    func transferRly() {
         channel.invokeMethod("transferPermit", arguments: ["destinationAddress": "0xe75625f0c8659f18caf845eddae30f5c2a49cb00", "amount": "2000000000000000000"]) { response in
             print("transfer txn = ", response!)
         }
