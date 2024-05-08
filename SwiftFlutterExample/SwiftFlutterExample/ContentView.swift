@@ -108,7 +108,7 @@ struct ContentView: View {
     }
 
     func setupEnv() {
-        channel.invokeMethod("configureEnvironment", arguments: [Secrets.apiKey, "mumbai"]) { response in
+        channel.invokeMethod("configureEnvironment", arguments: [Secrets.apiKey, "amoy"]) { response in
             print("Env Setup = ", response!)
             envSetup = true
         }
