@@ -148,7 +148,7 @@ class MainActivity : FlutterActivity() {
     }
 
     fun setupBlockchainEnv(){
-        methodChannel.invokeMethod("configureEnvironment", arrayListOf<String>("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOjQ3fQ.AmObzvqJBFddxgBcLgM-yHb5hPT90sai3SyS_V2ieM1UgHkfroybK-Hc9gpGhUtG1wPBTak6EPSVBJzyl2Z97g", "mumbai")
+        methodChannel.invokeMethod("configureEnvironment", arrayListOf<String>("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOjY3MH0.W8IAyOnO5ZqjL9-c-39JXfVnzkuL7KbxAP80S_cFhmTfDKtz9GBDBIjQ2P_CQLxD-SzcvCTRLjOj5VOcbxEq2g", "amoy")
             , object: MethodChannel.Result{
             override fun success(result: Any?) {
                 println("env set")
